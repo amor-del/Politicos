@@ -1,0 +1,91 @@
+@startuml
+
+abstract class Politico {
+    - nome: string
+    - partido: string
+    - esfera: Esfera
+    - poder: Poder
+    - localTrabalho: string
+    - enderecoTrabalho: string
+    - remuneracao: number
+    - projetos: string[]
+
+    + adicionarProjeto(titulo: string): void
+    + executarMandato(): string
+}
+
+enum Esfera {
+    MUNICIPAL
+    ESTADUAL
+    FEDERAL
+}
+
+enum Poder {
+    EXECUTIVO
+    LEGISLATIVO
+    JUDICIARIO
+}
+
+class Presidente {
+    - quantidadeMinistros: number
+
+    + executarMandato(): string
+    + nomearMinistro(): string
+    + exonerarMinistro(): string
+    + comandarForcasArmadas(): string
+    + representarPais(): string
+    + elaborarPpaLdoLoa(): string
+}
+
+class Governador {
+    - estado: string
+    - quantidadeSecretarios: number
+
+    + executarMandato(): string
+    + administrarPoliciaMilitar(): string
+    + administrarRodovias(): string
+    + administrarEducacaoSaude(): string
+    + elaborarPpaLdoLoa(): string
+}
+
+class DeputadoFederal {
+    - estado: string
+    - bancada: string
+
+    + executarMandato(): string
+    + votarPecsFederais(): string
+    + criarCpiNacional(): string
+    + votarPpaLdoLoa(): string
+    + proporLeiComplementar(): string
+}
+
+class DeputadoEstadual {
+    - estado: string
+    - comissoes: string[]
+
+    + executarMandato(): string
+    + votarPpaLdoLoa(): string
+    + proporEmendaConstitucionalEstadual(): string
+    + criarCpiEstadual(): string
+}
+
+class Senador {
+    - estado: string
+    - anoEleicao: number
+
+    + executarMandato(): string
+    + aprovarAutoridadesAltoEscalao(): string
+    + julgarCrimesResponsabilidade(): string
+    + representarInteressesEstado(): string
+}
+
+Politico <|-- Presidente
+Politico <|-- Governador
+Politico <|-- DeputadoFederal
+Politico <|-- DeputadoEstadual
+Politico <|-- Senador
+
+Politico --> Esfera
+Politico --> Poder
+
+@enduml
